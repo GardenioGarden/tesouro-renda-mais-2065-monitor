@@ -1,4 +1,4 @@
 name: Atualizar taxa Tesouro RendA+ 2065
 on: {schedule: [{cron: '0 12-21 * * 1-5'}], workflow_dispatch: {}}
 permissions: {contents: write}
-jobs: {update: {runs-on: ubuntu-latest, steps: [{uses: actions/checkout@v4}, {name: Buscar dados, run: 'curl -s "https://www.tesourodireto.com.br/o/historico-rentabilidade/187?days=5" -o data.json'}, {name: Commitar se mudou, run: "git config user.name \"github-actions[bot]\"\ngit config user.email \"github-actions[bot]@users.noreply.github.com\"\ngit add data.json\ngit diff --staged --quiet || git commit -m \"Atualiza dados\"\ngit push"}]}}
+jobs: {update: {runs-on: ubuntu-latest, steps: [{uses: actions/checkout@v4}, {name: Buscar dados, run: 'curl -s "https://www.tesourodireto.com.br/o/historico-rentabilidade/187?days=30" -o data.json'}, {name: Commitar se mudou, run: "git config user.name \"github-actions[bot]\"\ngit config user.email \"github-actions[bot]@users.noreply.github.com\"\ngit add data.json\ngit diff --staged --quiet || git commit -m \"Atualiza dados\"\ngit push"}]}}
